@@ -2,11 +2,11 @@
 from pyspark.sql import SparkSession
  
  
-def get_spark_session(app_name="MLApp"):
-    """Create and return a Spark session."""
+def get_spark_session(app_name="MLApps"):
     spark = SparkSession.builder \
         .appName(app_name) \
         .config("spark.sql.shuffle.partitions", "200") \
+        .config("spark.sql.adaptive.enabled", "true") \
         .getOrCreate()
     return spark
 
